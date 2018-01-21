@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1"/>
+	<title>Title</title>
+	<!--<link rel="stylesheet" href="./dist/css/style.css"/>-->
+	<style type="text/css">
+
+		html, body, div, span, applet, object, iframe,
+		h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+		a, abbr, acronym, address, big, cite, code,
+		del, dfn, em, img, ins, kbd, q, s, samp,
+		small, strike, strong, sub, sup, tt, var,
+		b, u, i, center,
+		dl, dt, dd, ol, ul, li,
+		fieldset, form, label, legend,
+		table, caption, tbody, tfoot, thead, tr, th, td,
+		article, aside, canvas, details, embed,
+		figure, figcaption, footer, header, hgroup,
+		menu, nav, output, ruby, section, summary,
+		time, mark, audio, video {
+			margin: 0;
+			padding: 0;
+			border: 0;
+			font-size: 100%;
+			font: inherit;
+			vertical-align: baseline;
+		}
+		/* HTML5 display-role reset for older browsers */
+		article, aside, details, figcaption, figure,
+		footer, header, hgroup, menu, nav, section {
+			display: block;
+		}
+		body {
+			line-height: 1;
+		}
+		ol, ul {
+			list-style: none;
+		}
+		blockquote, q {
+			quotes: none;
+		}
+		blockquote:before, blockquote:after,
+		q:before, q:after {
+			content: '';
+			content: none;
+		}
+		table {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+		/*body, ul, p, li, a, div{padding:0;margin:0}*/
+
+		html, body {
+			max-width: 100%;
+			overflow-x: hidden;
+		}
+		/* mobile에서의 가로 스크롤 없애기 */
+		div{
+			position: relative;
+			margin: 0 auto;
+			width:300px;
+			height: 200px;
+			overflow: hidden;
+
+		}
+
+		ul{
+			/*width: 1500px;*/
+			height: 100%;
+		}
+
+		li{
+			float: left;
+			width: 300px;
+			height: 200px;
+		}
+
+		.pagination_btn{
+			font-size: 50px;
+			color:#fff;
+		}
+
+		a{
+			cursor: pointer;
+		}
+		.wrap_btn {
+
+			position: absolute;
+			top:40%;
+			height: auto;
+		}
+
+		.wrap_btn .pagination_btn:first-child{
+
+			float:left;
+
+		}
+
+		.wrap_btn .pagination_btn:last-child{
+
+			float:right;
+
+		}
+
+		.one_direction{
+			transition: 500ms;
+			transform: translate(-100% ,0);
+		}
+
+
+		.on{
+			-webkit-transform: translate(0 ,0);
+			-webkit-transition: 500ms;
+
+			transform: translate(0 ,0);
+			transition: 500ms;
+		}
+
+		.move_left{
+			transition: 500ms;
+			transform: translate(100% ,0);
+		}
+
+		.move_right{
+			transition: 500ms;
+			transform: translate(-100% ,0);
+		}
+
+	</style>
+</head>
+<body>
+<h2>일방향적 rolling 구조</h2>
+<div>
+  <ul id="container_slide">
+	  <li class="slide" style="background-color: red">1</li>
+	  <li class="slide" style="background-color: blue">2</li>
+	  <li class="slide" style="background-color: yellow">3</li>
+	  <li class="slide" style="background-color: green">4</li>
+	  <li class="slide" style="background-color: pink">5</li>
+  </ul>
+</div>
+<h2>pagination btn 추가 rolling 구조</h2>
+<div>
+	<ul id="container_slide2">
+		<li class="slide2 1" style="background-color: red">1</li>
+		<li class="slide2 2" style="background-color: blue">2</li>
+		<li class="slide2 3" style="background-color: yellow">3</li>
+		<li class="slide2 4" style="background-color: green">4</li>
+		<li class="slide2 5" style="background-color: pink">5</li>
+		<!--<li class="slide2 6" style="background-color: pink">5</li>-->
+		<!--<li class="slide2 7" style="background-color: pink">5</li>-->
+		<!--<li class="slide2 8" style="background-color: pink">5</li>-->
+		<!--<li class="slide2 9" style="background-color: pink">5</li>-->
+		<!--<li class="slide2 10" style="background-color: pink">5</li>-->
+	</ul>
+	<div class="wrap_btn">
+		<a class="pagination_btn"><span data-dir="left">&lt</span></a>
+		<a class="pagination_btn"><span data-dir="right">&gt</span></a>
+	</div>
+
+</div>
+
+
+
+
+<script src="src/js/browser_detector.js"></script>
+<script src="src/js/rolling.js"></script>
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,262 @@
+/*
+*  17/12/27 까지 일방향적으로 슬라이딩 이벤트가 발생하는 슬라이더를 만들었다.
+*  기존 소스 또한 바꿀 예정이오나
+*  css및 js를 이용한 슬라이더에 pagination btn 을 추가 하여 보기로 한다
+*
+* */
+
+"use strict"
+
+class RollingSlide{
+    constructor(){}
+
+    animate(){}
+
+    rotate(){}
+
+    setContainer(){}
+
+    setSlides(){}
+
+}
+
+
+
+class SlideV1 extends RollingSlide{
+    constructor(elname, elsclassname, btns = null){
+        super();
+        this.initSlide = false;
+        this.slideContainer = this.setContainer(elname);
+        this.slides = this.setSlides(elsclassname);
+        this.btns = this.setBtn(btns)
+
+        console.log(this)
+
+        this.InitSlide(elsclassname);
+
+
+        document.addEventListener('click',(event)=>{
+            let directionType = event.target.getAttribute('data-dir');
+
+            if(directionType ==='left') {
+
+                  this.animate(directionType,elsclassname)
+
+              }else if(directionType ==='right'){
+
+                  this.animate(directionType,elsclassname)
+
+              }
+            // removeEventListener('click',this)
+        });
+
+    }
+
+    setContainer(str){
+        return document.querySelector(str);
+    }
+
+    setSlides(str){
+        return document.querySelectorAll(str);
+    }
+
+    setBtn(str){
+        return document.querySelectorAll(str);
+    }
+
+
+    rotate(type,str){
+
+
+
+        let tmpArray =[];
+        let isLeft = (type ==='left') ? true : false;
+
+
+        if(!isLeft){
+
+
+
+            this.slides.forEach((item,index,items)=>{
+                if(index > 0){
+                    tmpArray[--index]=item;
+                }else{
+                    tmpArray[this.slides.length-1]=item;
+                }
+
+            });
+
+            for(let i =0; i < tmpArray.length; i++){
+                this.slideContainer.appendChild(tmpArray[i]);
+            }
+
+            this.slides = this.setSlides(str)
+
+            this.tmpOn.nextElementSibling.classList.add('on')
+            this.tmpNext.nextElementSibling.classList.add('next')
+            this.tmpPrev.nextElementSibling.classList.add('prev')
+
+
+            this.tmpOn.classList.remove('on')
+            this.tmpNext.classList.remove('next')
+            this.tmpPrev.classList.remove('prev')
+
+        }else{
+
+            this.slides.forEach((item,index,items)=>{
+
+                if(index == this.slides.length-1){
+
+                    tmpArray[0]=item;
+
+                }else{
+
+                    tmpArray[++index]=item;
+
+                }
+
+            });
+
+            // console.log(tmpArray)
+
+            for(let i =0; i < tmpArray.length; i++){
+
+                this.slideContainer.appendChild(tmpArray[i]);
+
+            }
+
+
+            this.slides = this.setSlides(str)
+
+            this.tmpOn.previousElementSibling.classList.add('on');
+            this.tmpNext.previousElementSibling.classList.add('next');
+            this.tmpPrev.previousElementSibling.classList.add('prev');
+
+            this.tmpOn.classList.remove('on');
+            this.tmpNext.classList.remove('next');
+            this.tmpPrev.classList.remove('prev');
+
+
+
+        }
+
+
+    }
+
+    animate(type,str){
+
+        console.log(this.slides)
+
+        this.tmpOn = document.querySelector('.on');
+        this.tmpNext = document.querySelector('.next');
+        this.tmpPrev = document.querySelector('.prev');
+
+        console.log(this.tmpOn,this.tmpNext,this.tmpPrev)
+
+        if(type === 'right'){
+            console.log('요기')
+            this.tmpOn.style['transform'] = 'translate(-100%, 0)'
+            this.tmpOn.style['transition'] = '500ms'
+            this.tmpNext.style['transform'] = 'translate(-100%, 0)'
+            this.tmpNext.style['transition'] = '500ms'
+
+        }else if(type ==='left'){
+            console.log('조기')
+            this.tmpOn.style['transform'] = 'translate(100%, 0)'
+            this.tmpOn.style['transition'] = '500ms'
+            this.tmpPrev.style['transform'] = 'translate(100%, 0)'
+            this.tmpPrev.style['transition'] = '500ms'
+
+
+
+        }
+
+
+
+        setTimeout(()=>{
+
+            this.tmpOn.style.removeProperty('transform');
+            this.tmpOn.style.removeProperty('transition');
+            this.tmpNext.style.removeProperty('transform');
+            this.tmpNext.style.removeProperty('transition');
+            this.tmpPrev.style.removeProperty('transform');
+            this.tmpPrev.style.removeProperty('transition');
+
+            this.rotate(type,str)
+
+        },500)
+    }
+
+
+    InitSlide(str){
+
+        let slideLastIndex =this.slides.length-1;
+
+
+        this.slides[0].classList.add('on');
+        this.slides[1].classList.add('next');
+        this.slides[slideLastIndex].classList.add('prev');
+
+
+
+        this.slideContainer.style['width'] = (300 * (slideLastIndex+1))+'px';
+
+
+        let tmpArray = [];
+        let middleSpot =((slideLastIndex+1) % 2 == 0)? (slideLastIndex+1)/2 : Math.ceil((slideLastIndex+1)/2);
+
+        let isOdd = (slideLastIndex%2 ==0)? true : false;
+
+
+
+        if(!this.initSlide){
+
+
+            this.slides.forEach((item, index, items)=>{
+
+
+
+              if(index < middleSpot){
+                  if(isOdd){
+                        tmpArray[index] = items[index + middleSpot-1]
+                    return
+                  }
+                  tmpArray[index] = items[index + middleSpot]
+
+              }else {
+
+                  tmpArray[index] = items[index - middleSpot]
+              }
+
+
+            })
+
+            console.log(tmpArray,'end')
+
+            for(let i=0; i <= slideLastIndex; i++){
+
+                this.slideContainer.appendChild(tmpArray[i])
+
+            }
+
+
+
+            this.slideContainer.style['transform'] = 'translate('+ -300*middleSpot +'px, 0)'
+
+            this.slides = this.setSlides(str);
+
+        }else{
+
+
+        }//else
+
+
+
+    }
+}
+
+
+
+let slide1 = new SlideV1('#container_slide2','.slide2','.pagination_btn')
+
+

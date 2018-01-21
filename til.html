@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>TIL</title>
+	<style>
+		*{color: green; font-size: 20px}
+		.clear_test::before{clear:both;height:0px;content:''}
+		.link_more:hover{
+			cursor: pointer;
+		}
+
+	</style>
+</head>
+<body style="width:1000px;margin: 0 auto">
+<h2>3단</h2>
+	<div id="wrap_layout">
+		<div style="margin-bottom: 10px;height:100px;background-color: gray"> header</div>
+		<div class="nav" style="float:left; width:14%; height:500px;margin-right: 10px; background-color:red">nav</div>
+		<div class="content"  style="float:left;margin-bottom: 10px;width:70%; height:500px; margin-right: 10px;background-color: yellow">몸</div>
+		<div class="side"  style="float:left; width:14%; height:500px; background-color: blue">side</div>
+		<div style="clear:both;height:100px;background-color: pink"> footer</div>
+	</div>
+<h2>2단</h2>
+	<div id="wrap_layout" style="overflow: hidden;">
+		<div style="margin-bottom: 10px;height:100px;background-color: gray"> header</div>
+		<div class="article" style="float:left; width:70%; margin-right: 10px; height:500px; background-color:red">article</div>
+		<div class="side"  style="float:right; width:28%;  height:500px; background-color: blue">side</div>
+	</div>
+<h2>float</h2>
+	<div id="wrap_layout" style="clear: both; padding: 10px 0" >
+		<div style="float:left;width:50%; height: 300px;background-color: gray">box1</div>
+		<div style="float:right;width:50%; height: 300px; background-color:red">box2</div>
+		<div style="clear:both"></div>
+		<div style="width:50%; height: 300px; background-color:blue">box3</div>
+	</div>
+<h2>position 더보기</h2>
+	<div id="wrap_layout" style="display:inline-block;position:relative;clear: both; padding:10px 10px; width:50%;" >
+		<h2>전문가 칼럼</h2>
+		<ul>
+			<li><b>뒷 모습을 좌지우지하는 테일 램프디자인 호우!</b></li>
+			<li>시대에 맞는 유가 정책이 필요한 시점일꺼야!</li>
+			<li>자동차의 인상을 좌우하는 래드램프는 머야! 그게 도대체</li>
+			<li>세계는 지금...'블루(blue)'시대..</li>
+			<li><b>뒷 모습을 좌지우지하는 테일 램프디자인 호우!</b></li>
+			<li>시대에 맞는 유가 정책이 필요한 시점일꺼야!</li>
+			<li>자동차의 인상을 좌우하는 래드램프는 머야! 그게 도대체</li>
+			<li>세계는 지금...'블루(blue)'시대..</li>
+		</ul>
+		<div class="link_more">
+			<a href="#" style="position:absolute; top:30px;right:10px">
+				<span style="color: black;text-decoration: underline">더보기</span>
+			</a>
+		</div>
+	</div>
+</body>
+</html>

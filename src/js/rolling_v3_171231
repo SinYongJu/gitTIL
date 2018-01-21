@@ -1,0 +1,315 @@
+/*
+*  17/12/27 까지 일방향적으로 슬라이딩 이벤트가 발생하는 슬라이더를 만들었다.
+*  기존 소스 또한 바꿀 예정이오나
+*  css및 js를 이용한 슬라이더에 pagination btn 을 추가 하여 보기로 한다
+*
+* */
+
+/*
+*
+*  17/12/31 까지 한거 일단 css를 이용한 롤링 슬라이더를 구현 하였다 소스가 조금 많이 더럽다
+*
+*
+*
+*
+* */
+
+
+
+"use strict";
+
+class RollingSlide{
+
+    constructor(slideContainer,slide,rolling = true){
+
+        console.log(slideContainer,slide)
+        this.isInit = false;
+        this.setContainer(slideContainer);
+        this.setSlides(slide);
+        this.slideLength = this.slides.length;
+        this.init(rolling,slide);
+        console.log(this)
+
+
+    }
+
+    leftMovement(callback){
+        // console.log(this.slides)
+        
+        let tmparr = [];
+        let slideLastIndex = this.slideLength-1;
+
+        this.slides.forEach((item, index, items)=>{
+            if(index == 0){
+                tmparr[index] = items[slideLastIndex];
+            }else{
+                tmparr[index] = items[index-1]
+            }
+        });
+
+        for(let i =0; i < tmparr.length; i++){
+            if(i == 1)tmparr[i].classList.add('on')
+            this.container.appendChild(tmparr[i])
+        }
+
+
+       // if(this.isInit){
+       //    this.animate()
+       //}
+
+
+        // console.log(typeof callback)
+
+        if(typeof callback === 'function' && callback()){
+            console.log('left animate func');
+        }
+        /*
+        *
+        * flag방식으로 스크립트를 짜려고 함
+        * */
+
+
+        // console.log(this.target)
+        // this.target.classList.add('move')
+
+    }
+
+    rightMovement(callback){
+        // console.log(this.slides)
+
+
+        let tmparr = [];
+        let slideLastIndex = this.slideLength-1;
+
+        this.slides.forEach((item, index, items)=>{
+
+            if(index == 0){
+
+                tmparr[slideLastIndex] = items[index];
+
+            }else{
+
+                tmparr[index-1] = items[index]
+
+            }
+        });
+
+        for(let i =0; i < tmparr.length; i++){
+            if(i == 1)tmparr[i].classList.add('on')
+            this.container.appendChild(tmparr[i])
+
+        }
+
+        if(typeof callback === 'function'  && callback() ){
+
+            console.log('right animate func');
+        }
+    }
+
+
+
+    convertRoll(slide){
+
+        this.leftMovement()
+        this.slides = this.setSlides(slide);
+        // console.log(this.slides)
+        //left 사이드 이동
+    }
+
+    init(rolling,slide){
+
+               console.log('welcome')
+
+        this.container.style['width'] = this.slideLength * this.slides[0].clientWidth + 'px';
+        this.container.style['position'] = 'absolute'
+        this.container.style['left'] = -this.slides[0].clientWidth + 'px';
+
+        // this.slides.forEach((item,index,items)=>{
+            this.container.style['transition'] = '500ms'
+        // });
+
+
+        if(rolling){
+            this.convertRoll(slide)
+
+
+        }else{
+
+
+        }
+
+        this.isInit = true;
+
+
+    }
+
+
+
+    convertOneway(){
+
+    }
+
+    animate(type){
+               // console.log('gogogogogogogo')
+        /*
+        *
+        *   1. css js이용
+        *   2. js
+        *   3. 스크립트 단에서 style에 css삽입
+        * */
+                    // console.log(typeof this.animate())
+
+
+        // console.log(this.isInit)
+        // if(type == 'left'){
+            // this.container.style['transform'] = 'translate(-20%, 0)'
+        // }
+
+        // if(type == 'right'){
+            // this.target.classList.add('move')
+
+        // }
+
+        // console.log()
+
+        // console.log(this.target.previousElementSibling, this.target.nextElementSibling);
+
+
+
+        // right 클릭시 previousElmentSibling이 안잡힘
+    }
+
+
+    setContainer(str){
+
+        console.log('ho')
+        return this.container =  document.querySelector(str);
+
+    }
+
+    setSlides(str){
+
+        this.slides =  document.querySelectorAll(str);
+
+        return  this.slides
+    }
+
+}
+
+
+
+class slideV2 extends RollingSlide{
+
+    constructor(slideContainer,slide){
+
+        super(slideContainer,slide);
+
+
+        document.addEventListener('click',(event)=>{
+
+            event.preventDefault();
+
+
+            let type = event.target.getAttribute('data-dir');
+
+            if(type == null)return
+
+            this.target = document.querySelector(slide+'.on');
+            this.target.classList.remove('on');
+
+
+            console.log(typeof this.animate)
+
+
+            if(type ==='right'){
+
+                this.animate(type,()=>this.rightMovement());
+
+            }else if(type ==='left'){
+
+                this.animate(type,()=>this.leftMovement());
+
+            }
+
+
+            this.slides = this.setSlides(slide);
+        });
+
+    }
+
+    animate(type,callback){
+        let directionType = 'move_'+type
+
+
+
+        this.target.classList.add(directionType);
+        this.target.previousElementSibling.classList.add(directionType)
+        this.target.nextElementSibling.classList.add(directionType)
+        // this.target.style['marginLeft'] = '-20%'
+
+        setTimeout(()=>{
+            this.target.classList.remove(directionType);
+            this.target.previousElementSibling.classList.remove(directionType);
+            this.target.nextElementSibling.classList.remove(directionType)
+            if(typeof callback === 'function'  && callback() ){
+
+                console.log('seiko')
+
+            }
+
+        },500)
+            console.log('right animate func');
+
+
+    }
+
+}
+
+
+
+let slide2 = new slideV2('#container_slide2','.slide2');
+
+// console.dir(slide2.slides[0].clientWidth)
+
+
+let handle = {
+
+    animation : {
+
+        transform  :
+            {
+                left :'translate(100%, 0)',
+                right : 'translate(-100%, 0)'
+            }
+    }
+
+}
+
+//
+//
+//
+// let handleTest = {
+//     close : 'alt',
+//     open : 'eye',
+//     run : 'leg',
+//     pull : 'arms',
+//     swing : 'hip',
+//     tall : 178,
+//     isMan : true
+//
+// }
+
+let test = (obj)=>{
+    if(obj === null || obj === undefined) return
+
+    let tmpObj = {}
+    Object.keys(obj).forEach((item, index)=>{
+       tmpObj[item] = obj[item]
+    });
+
+    return tmpObj
+
+}
+
+
+console.log(test(handler));

@@ -1,0 +1,166 @@
+/*
+* 17/12/26
+*
+* 26일 이전에서 문제점을 발견 할때 까지 rolling기능의 분리를 목적으로 삼았었다
+*
+* 26일 이후에는 문제점에 대한 해결을 하려고 함.
+*
+* 슬라이더의 구현 방식을 달리 하기로 하였다.
+*
+* 고로
+*
+* 그로인한 파생된 문제에 대하여 회고하려고 한다.
+*
+* 1. 현재 보여지고 있는 슬라디더의 정보를 알 수 가 없다.
+*
+* 2. 먼가 rolling 이라는 기능으로 인한 slider nodelist 자체의 reset이 되지 않는다.
+*
+* 3. slider의 화면 전환 방식의 문제로 인하여 로직이 복잡해 지는 거 같다.
+*
+* 어디까지나 갠적인 생각이다.
+* */
+
+"use strict"
+
+    /*
+    * 현재 스크립트의 목표
+    *
+    * rolling기능 일때는
+    *
+    * 시작하자 마자 0번째 보여 지는 슬라이드에 .on을 넣고 나머지 .prev를 last태그에, .next를 1번째 태그에 넣을 생각입니다.
+    *
+    * 마크업상 0번째와 마지막 태그의 구조를 이닛에서 조금 바꾸는 쪽이 슬라이더를 움직이기 편할거 같다.
+    *
+    * init시 prev current next  [i] [i+1] 요런식으로 배치할까 함.
+    *
+    * 현 마크업상 핑크 레드 블루 옐로 그린
+    *
+    * 그래서 이동 하면서 바뀌 도록 배치를 달리 하도록 할 꺼임.
+    * */
+
+    // 요건 class 추가가 가능 한지 확인을 하였음
+    //
+
+
+    // console.log(tmparr)
+    // return slide1_elem
+
+/*
+*
+* 버전 1. 일방향적 rolling 기능
+*
+* */
+class RollingScroll {
+
+    constructor(el, els) {
+        this.strEl = el;
+        this.strEls = els;
+        this.length;
+        this.setEl(el);
+        this.setEls(els);
+
+        this.constructor.init();
+
+    }
+
+    static init() {
+        console.log('wellcome!')
+
+    }
+
+
+    setEl(){
+        this.el = document.querySelector(this.strEl);
+        this.el.addEventListener('click',(evt)=>{ this.animate(evt);
+            this.el.removeEventListener('click',this.rotate);
+        })
+    };
+
+    setEls(els){
+        this.els = document.querySelectorAll(els);
+        this.length = this.els.length;
+    };
+
+    animate(evt){
+        /*
+        *   클래스를 띄었다 붙였다 하며 애니메이션을 주고 있다.
+        *
+        * */
+        evt.preventDefault();
+
+        console.log(evt)
+
+        evt.target.nextElementSibling.classList.add('on');
+        evt.target.classList.add('on');
+
+        setTimeout(()=>{
+            evt.target.classList.remove('on');
+            evt.target.nextElementSibling.classList.remove('on')
+            this.rotate();
+
+        },500)
+
+
+
+        this.setEls(this.strEls);
+
+    }
+
+    rotate(){
+
+        /*
+        *   클릭을 하면 애니메이션 상에서는 이동하나 실질적으로는 배열의 구조가 바뀜
+        *
+        * */
+
+        let tmparr = [];
+
+        this.els.forEach((item,index,items)=>{
+            if(index == 0){
+                tmparr[this.length-1] = item;
+            }else{
+                tmparr[index-1] = item;
+            }
+
+
+        });
+
+
+        for(let i = 0; i < tmparr.length; i ++){
+            this.el.appendChild(tmparr[i])
+        }
+
+
+    };
+}
+
+class RollingSlide extends RollingScroll{
+
+
+}
+
+let slider =  new RollingSlide('#container_slide','.slide')
+
+console.log(slider)
+
+
+
+
+// 유틸 함수의 생성을 하려고 한다.
+// 함수 호출시 해당 태그에 대한 정보와 카운터 객체 정보를 확인하려고 한다.
+// function tmpConsole(){
+//
+//     console.log(this)
+//     console.count(this)
+//     console.dir(this)
+//
+// }
+
+/*
+* 여기 까지 짜고 보니 안 좋은점 상속 및 상속한 메서드들에 대하여
+* 적용할 먼가가가 안됨
+* 객체 지향이라는 느낌이 안든다.
+* 지식 좀 가지고 짜야 겠다.
+*
+* */
+

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1"/>
+	<title>Title</title>
+	<!--<link rel="stylesheet" href="./dist/css/style.css"/>-->
+	<style type="text/css">
+
+		html, body, div, span, applet, object, iframe,
+		h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+		a, abbr, acronym, address, big, cite, code,
+		del, dfn, em, img, ins, kbd, q, s, samp,
+		small, strike, strong, sub, sup, tt, var,
+		b, u, i, center,
+		dl, dt, dd, ol, ul, li,
+		fieldset, form, label, legend,
+		table, caption, tbody, tfoot, thead, tr, th, td,
+		article, aside, canvas, details, embed,
+		figure, figcaption, footer, header, hgroup,
+		menu, nav, output, ruby, section, summary,
+		time, mark, audio, video {
+			margin: 0;
+			padding: 0;
+			border: 0;
+			font-size: 100%;
+			font: inherit;
+			vertical-align: baseline;
+		}
+		/* HTML5 display-role reset for older browsers */
+		article, aside, details, figcaption, figure,
+		footer, header, hgroup, menu, nav, section {
+			display: block;
+		}
+		body {
+			line-height: 1;
+		}
+		ol, ul {
+			list-style: none;
+		}
+		blockquote, q {
+			quotes: none;
+		}
+		blockquote:before, blockquote:after,
+		q:before, q:after {
+			content: '';
+			content: none;
+		}
+		table {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+		/*body, ul, p, li, a, div{padding:0;margin:0}*/
+
+		html, body {
+			max-width: 100%;
+			overflow-x: hidden;
+		}
+		/* mobile에서의 가로 스크롤 없애기 */
+		body > div{position:relative;overflow:hidden;margin:0 auto; padding:50px 0;width:300px;height:100px}
+		ul[id*="container"]{position:absolute;overflow:hidden;margin:0;padding:0;width:1500px;height:50%}
+		ul[id*="container"] li{float:left;width:300px;height:100px;-moz-transition:transform 500ms;-webkit-transition:transform 500ms;text-align:center;font-weight:bold;line-height:100px;font-size:20px}
+		ul[id*="container"] li:nth-child(1){background-color:red}
+		ul[id*="container"] li:nth-child(2){background-color:blue}
+		ul[id*="container"] li:nth-child(3){background-color:yellow}
+		ul[id*="container"] li:nth-child(4){background-color:green}
+		ul[id*="container"] li:nth-child(5){background-color:pink}
+		li{list-style: none}
+		a:link { color: black; text-decoration: none;}
+		a:visited { color: black; text-decoration: none;}
+		a:hover { color:black;cursor:pointer;}
+		/*출처: http://it77.tistory.com/126 [시원한물냉의 사람사는 이야기]*/
+		.wrap_slide4 .pagination_btn{position:absolute;left:36%;bottom:25%}
+		input[type="radio"]{position:absolute;bottom:27%;z-index:1;cursor: pointer}
+		input[type="radio"]:nth-child(1){left: 35%}
+		input[type="radio"]:nth-child(2){left: 40%}
+		input[type="radio"]:nth-child(3){left: 45%}
+		input[type="radio"]:nth-child(4){left: 50%}
+		input[type="radio"]:nth-child(5){left: 55%}
+		input[type="radio"]:checked:nth-child(1)~ul li{-webkit-transform: translate(0px, 0px);-moz-transform: translate(0px, 0px)}
+		input[type="radio"]:checked:nth-child(2)~ul li{-webkit-transform: translate(-300px, 0px);-moz-transform: translate(-300px, 0px)}
+		input[type="radio"]:checked:nth-child(3)~ul li{-webkit-transform: translate(-600px, 0px);-moz-transform: translate(-600px, 0px)}
+		input[type="radio"]:checked:nth-child(4)~ul li{-webkit-transform: translate(-900px, 0px);-moz-transform: translate(-900px, 0px)}
+		input[type="radio"]:checked:nth-child(5)~ul li{-webkit-transform: translate(-1200px, 0px);-moz-transform: translate(-1200px, 0px)}
+		.tab_info:after{display:block;overflow:hidden;height:0;clear:both;content:''}
+		.wrap_cont{padding:0;margin:50px auto;height:auto}
+		.wrap_cont a{display: block}
+		.tab_info a{padding:10px;border-radius: 40%}
+		.tab_info li{float:left;border:1px solid black;border-radius: 40%}
+		.list_info li{overflow: hidden}
+		a.on{background-color: blue;color: aliceblue}
+		li.on{display:block}
+		li.hide{display:none}
+		.list_info span{display: -webkit-box;overflow: hidden; height: 30px;text-overflow:ellipsis;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp: 2}
+		.wrap_slide7{position:static}
+		#container_slider7{display:-webkit-box;overflow-x: auto;overflow-y: hidden;-webkit-transition:transform 500ms;height: auto}
+		#container_slider7 li{position:relative;}
+		.nav_paging{margin-bottom: 5px}
+		.nav_paging a{display:inline-block;padding:2px 10px 0;width:25px;border:2px solid #919191;border-radius:5px;text-align: center}
+		.nav_paging > span{display:inline-block;}
+		.nav_paging a:nth-child(1) span:nth-child(1){float:left}
+		.nav_paging a:nth-child(2) span:nth-child(1){float:right}
+		#container_slider6 .slide6{width:6.6666%}
+
+	</style>
+</head>
+<body>
+<h2>slider1의 구현 mouseenter</h2>
+<div>
+  <ul id="container_slide1">
+	  <li class="slide1">1</li>
+	  <li class="slide1">2</li>
+	  <li class="slide1">3</li>
+	  <li class="slide1">4</li>
+	  <li class="slide1">5</li>
+  </ul>
+</div>
+<h2>slider2의 구현 일방향 click</h2>
+<div>
+	<ul id="container_slide2">
+		<li class="slide2">1</li>
+		<li class="slide2">2</li>
+		<li class="slide2">3</li>
+		<li class="slide2">4</li>
+		<li class="slide2">5</li>
+	</ul>
+</div>
+<h2>slider3의 구현 자동 슬라이더</h2>
+<div>
+	<ul id="container_slide3">
+		<li class="slide3">1</li>
+		<li class="slide3">2</li>
+		<li class="slide3">3</li>
+		<li class="slide3">4</li>
+		<li class="slide3">5</li>
+	</ul>
+</div>
+<h2>slider4의 구현 pagination btn</h2>
+<div class="wrap_slide4">
+	<ul id="container_slide4">
+		<li class="slide4">1</li>
+		<li class="slide4">2</li>
+		<li class="slide4">3</li>
+		<li class="slide4">4</li>
+		<li class="slide4">5</li>
+	</ul>
+	<div class="pagination_btn">
+		<button type="button" name="left">&lt</button>
+		<button type="button" name="right">&gt</button>
+	</div>
+</div>
+<h2>slider5의 구현 radio_btn을 이용한 only-css</h2>
+<div>
+	<input checked="checked" type="radio" name="radio_slide5" value="1"/>
+	<input type="radio" name="radio_slide5" value="2"/>
+	<input type="radio" name="radio_slide5" value="3"/>
+	<input type="radio" name="radio_slide5" value="4"/>
+	<input type="radio" name="radio_slide5" value="5"/>
+		<ul id="container_slide5">
+			<li class="slide5">1</li>
+			<li class="slide5">2</li>
+			<li class="slide5">3</li>
+			<li class="slide5">4</li>
+			<li class="slide5">5</li>
+		</ul>
+</div>
+<h2>tab test</h2>
+<div class="wrap_cont">
+	<ul class="tab_info">
+		<li>
+			<a class="on"data-type="tab1" >아이유</a>
+		</li>
+		<li>
+			<a class="" data-type="tab2">설현</a>
+		</li>
+		<li>
+			<a class="" data-type="tab3">오연서</a>
+		</li>
+	</ul>
+	<ul class="list_info">
+		<li class="on tab1">
+			<a href="javascript:;">
+				<span>
+					Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+				</span>
+			</a>
+		</li>
+		<li class="hide tab2">
+			<a href="javascript:;">
+				<span>
+					It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+				</span>
+			</a>
+		</li>
+		<li class="hide tab3">
+			<a href="javascript:;">
+				<span>
+					There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+				</span>
+			</a>
+		</li>
+	</ul>
+</div>
+<h2>paging nav</h2>
+<div>
+	<div class="nav_paging">
+		<a>
+			<span>&lt</span><span class="info_prev">0</span>
+		</a>
+			/
+		<a>
+			<span>&gt</span><span class="info_total">0</span>
+		</a>
+	</div>
+	<div>
+		<ul id="container_slider6">
+			<li class="slide6">1</li>
+			<li class="slide6">2</li>
+			<li class="slide6">3</li>
+			<li class="slide6">4</li>
+			<li class="slide6">5</li>
+			<li class="slide6">6</li>
+			<li class="slide6">7</li>
+			<li class="slide6">8</li>
+			<li class="slide6">9</li>
+			<li class="slide6">10</li>
+			<li class="slide6">11</li>
+			<li class="slide6">12</li>
+			<li class="slide6">13</li>
+			<li class="slide6">14</li>
+			<li class="slide6">15</li>
+			<li class="slide6">16</li>
+		</ul>
+	</div>
+</div>
+<script>
+(function(){
+    /*
+    *
+    *
+    * object, map, array 객체에 관련한 method들에 대한 이해도를 높여야할듯
+    *
+    * 2017-12-25 까지 진행한 작업들은
+    *
+    * 아직 컴포넌트 단위로의 슬라이더를 나눈것이고
+    *
+    * html에 script태그로 나눠두었다.
+    *
+    * 브라우저 지택터라는 js를 분리하여 전역으로 사용하고자 함. rolling도
+    *
+    * 하지만 현재 발견된 문제가 rolling.js를 사용하여 수시로 컴포넌트의 slider들의 순서 재배열에 있어서
+    *
+    * 먼가 비효율적인 면을 발견하게 되었다.
+    *
+    * 현 구조적인 문제에서 개발을 진행할 시 매번 rolling 될 시(태그가 원형으로 있다는)  제 등록을 해줘야 하며
+    *
+    * 현재 slider들의  넘겨지는 방식이 transition: translate로  li로 각각에 속성을 부여 하므로써 움직이고 있음
+    *
+    * 방식을 따로 바꿔야 할 듯 함.
+    * */
+
+	const allSlides = document.querySelectorAll('.slide6');
+	const btnPrev = document.querySelector('.nav_paging a:nth-child(1)');
+    const btnNext = document.querySelector('.nav_paging a:nth-child(2)');
+	const totalSize = document.querySelector('.info_total').innerHTML = (allSlides.length%3)>0 ? Math.ceil(allSlides.length/3) : allSlides.length/3;
+	const initialPage = 1;
+    let currentPage = document.querySelector('.info_prev');
+
+	currentPage.innerHTML = initialPage;
+    let pageNum = parseInt(currentPage.innerHTML)
+	let handle = {
+        'pageIncrease' : function(e){
+            console.count(this)
+            e.preventDefault()
+            if(pageNum < totalSize){
+                pageNum	= pageNum+1
+                currentPage.innerHTML = pageNum
+            }
+
+        },
+		'pageDecrease' : function(e){
+            e.preventDefault()
+            if(pageNum > 1){
+                pageNum	= pageNum-1
+                currentPage.innerHTML = pageNum
+            }
+		}
+	}
+
+//	let calc = ()=> {
+
+//    }
+
+
+    btnPrev.addEventListener('click',handle.pageDecrease,false);
+	btnNext.addEventListener('click',handle.pageIncrease,false);
+
+})()
+</script>
+
+<h2>only mobile swiper</h2>
+<div class="wrap_slide7">
+	<ul id="container_slider7">
+		<li class="slide7">1</li>
+		<li class="slide7">2</li>
+		<li class="slide7">3</li>
+		<li class="slide7">4</li>
+		<li class="slide7">5</li>
+	</ul>
+</div>
+
+
+
+
+
+<script src="src/js/browser_detector.js"></script>
+<script src="src/js/rolling.js"></script>
+<script>
+
+	const browserHandler = (function(){
+
+	       /*
+	    *
+	    *  요건 그냥 예시로 짜보는 브라우저 판별용 js 입니다, 브라우저 공부 끝나는 데로 바로 수정할 계획
+	    *
+	    *
+	    * */
+
+
+
+
+
+        if(browserInfo.name==='opera'){return "-webkit-transform"}
+	    if(browserInfo.name==='chrome'){return "-webkit-transform"}
+        if(browserInfo.name==='safari'){return "-webkit-transform"}
+        if(browserInfo.name==='firefox'){return  "-moz-transform"}
+
+        return  "-webkit-transform"
+	})()
+</script>
+<script>
+	(function(){
+		/*
+		* 슬라이드1
+		*
+		* 1.크로스브라우징을 한다면?! 저번에 스칼렛의  mtmmsm에서 했던 방식을 적용해 보는 쪽이 좋지 않을까 생각된다.
+		* 1-1. 브라우저 마다 다를꺼를 생각해서 보자
+		* 2.getelementByClass와 queryselectorAll의 차이가 있음 전자는 객체 후자는 배열
+		*
+		*
+		*
+		* 생각 1.prototype 으로 객체 추가를 window나 document객체에 해서 사용하는 방법을 간구해 보자
+		* 먼가 재미질듯 그리고 모듈개념으로! 생각해 보는 것도 재미질듯 합니다.
+		*
+		* 생각 2. 전체 적인 반응형으로 하려면 넓이를 가져와서 duration 에 일괄적으로 넣어주는 작업이 적당할듯 합니다.
+		*
+		* */
+	    const slide1 = document.getElementById('container_slide1');
+		let slide1_elem = document.querySelectorAll('.slide1');
+		const slide1_elem_lastIndex = slide1_elem.length;
+
+//		let __arr = new RollingElem(slide1_elem);
+//
+		console.log()
+        let duration = -300;
+		let handle = function(){
+            slide1_elem.forEach(function(item, idx){
+
+                if(duration != (slide1_elem_lastIndex * -300)){
+                    item.style[browserHandler]='translate('+ duration +'px,0px)'
+
+                }else{
+                    item.style[browserHandler]='translate(0px,0px)'
+                    return duration = 0;
+                }
+
+
+            });
+            duration -= 300;
+        };
+		slide1.addEventListener('mouseenter',handle);
+
+
+
+	})();
+</script>
+<script>
+    (function(){
+        /*
+		*슬라이드2
+		*getelementByClass와 queryselectorAll의 차이가 있음 전자는 객체 후자는 배열
+		* */
+        const slide2 = document.getElementById('container_slide2');
+        const slide2_elem = document.querySelectorAll('.slide2');
+        const slide2_elem_lastIndex = slide2_elem.length;
+        let duration = -300;
+
+
+        slide2.addEventListener('click',function(){
+            slide2_elem.forEach(function(item){
+                if(duration != slide2_elem_lastIndex * -300){
+                    item.style[browserHandler]='translate('+ duration +'px,0px)'
+                }else{
+                    item.style[browserHandler]='translate(0px,0px)'
+                    return duration = 0;
+                }
+            });
+            duration -= 300;
+        });
+
+    })();
+</script>
+<script>
+    (function(){
+        /*
+		*슬라이드3
+		* 요기서 부터는 addEventListener의 callback을 따로 handler로 저장할꺼임
+		*getelementByClass와 queryselectorAll의 차이가 있음 전자는 객체 후자는 배열
+		* */
+        const slide3_elem = document.querySelectorAll('.slide3');
+        const slide3_elem_lastIndex = slide3_elem.length -1;
+        let duration = 0;
+        let direction = true;
+        let currentDuration = (slide3_elem_lastIndex *-300);;
+		let handle = function(){
+
+            if(direction){
+                duration -= 300;
+
+            }else{
+                duration += 300;
+            };
+
+		    if(duration == currentDuration){
+                direction = false;
+
+            }else if(!direction&&duration == 0){
+		        direction = true;
+			};
+
+            slide3_elem.forEach(function(item){
+                    item.style[browserHandler]='translate('+ duration +'px,0px)'
+            });
+
+        };
+
+        setInterval(handle,1500);
+
+
+    })();
+</script>
+<script>
+    (function(){
+        /*
+		*슬라이드4 pagination btn
+		*getelementByClass와 queryselectorAll의 차이가 있음 전자는 객체 후자는 배열
+		* */
+        const slide4_elem = document.querySelectorAll('.slide4');
+        const slide4_elem_lastIndex = slide4_elem.length-1;
+        const nav_btn = document.querySelector('.pagination_btn');
+        let duration = 0;
+
+        let handle= function(target) {
+
+            if (target=="right" && duration > -300*slide4_elem_lastIndex) {
+
+                duration -= 300;
+
+            }else if(target == "left" && duration < 0){
+
+                if(duration != 0){
+                    duration += 300;
+				}
+
+            }
+
+            slide4_elem.forEach(function (item) {
+                item.style[browserHandler] = 'translate(' + duration + 'px,0px)'
+            });
+
+        }
+
+        nav_btn.addEventListener('click',function(event){
+
+            if(event.target.localName != "button"){
+             return
+		    };
+
+           handle(event.target.name);
+        });
+
+
+    })();
+</script>
+<script>
+	(function(){
+
+		const wrap_tab = document.querySelector('.tab_info');
+		let elname;
+		let target;
+        let currentOn;
+        let TargetClassOn;
+
+        let handle =function(event){
+
+            target = event.target;
+            elname = target.dataset.type;
+            currentOn =	document.querySelector('a.on');
+            TargetClassOn = document.querySelector('li.'+elname).classList;
+
+            if(target.localName == 'a' && target.classList.value.indexOf('on')==-1) {
+                currentOn.classList.remove('on')
+                target.classList.add('on')
+            }
+
+            currentOn = document.querySelector('li.on');
+
+            if(TargetClassOn.value.indexOf('on')==-1){
+
+                TargetClassOn.remove('hide');
+                TargetClassOn.add('on');
+                currentOn.classList.add('hide')
+                currentOn.classList.remove('on');
+
+            };
+        }; // handle
+
+		wrap_tab.addEventListener('click',handle);
+
+
+	})();
+</script>
+<script>
+    (function(){
+        const slideContainer=document.querySelector('#container_slider7')
+        let prevX=null;
+        let nextX=null;
+        let currentX=0;
+        let tmp;
+        let pretmp = 0;
+        let nexttmp = 0;
+
+        function touchMotion(){
+
+            if(currentX > 0 ) {
+                currentX = 0
+            }
+
+            if(currentX < -1200){
+
+                currentX = -1200
+            }
+
+            slideContainer.style[browserHandler] = 'translate('+currentX+'px,0px)';
+
+        }
+
+        function timeHandle(){
+            tmp = nexttmp - pretmp
+        }
+
+
+        let handler = {
+
+            'setPrevPageX' : function(e){
+                e.preventDefault();
+                tmp = 0;
+                prevX = e.changedTouches[0].pageX
+            },
+
+            'setNextPageX' : function(e){
+
+                e.preventDefault();
+                clearTimeout()
+                nextX = e.changedTouches[0].pageX
+                currentX += nextX-prevX
+
+                touchMotion()
+
+            },
+
+            'responsivePageX' : function(e){
+                e.preventDefault();
+
+                pretmp = (nexttmp=='undefiend')? e.changedTouches[0].pageX : nexttmp;
+                nexttmp = e.changedTouches[0].pageX;
+                setTimeout(timeHandle,100)
+                currentX += tmp;
+                touchMotion(currentX);
+            }
+
+        };
+
+
+
+        slideContainer.addEventListener('touchstart',handler.setPrevPageX,false);
+        slideContainer.addEventListener('touchmove',handler.responsivePageX,false);
+        slideContainer.addEventListener('touchend',handler.setNextPageX,false);
+    })()
+
+</script>
+</body>
+</html>
+
+
+
+

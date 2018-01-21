@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>마일리지홈</title>
+	<style>
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,textarea,p,blockquote,th,td,input,select,button{margin:0;padding:0}
+		fieldset,img{border:0 none}
+		dl,ul,ol,menu,li{list-style:none}
+		blockquote, q{quotes: none}
+		blockquote:before, blockquote:after,q:before, q:after{content:'';content:none}
+		input,select,textarea,button{vertical-align:middle}
+		input::-ms-clear{display:none}
+		button{border:0 none;background-color:transparent;cursor:pointer}
+		body{background:#fff}
+		body,th,td,input,select,textarea,button{font-size:12px;line-height:1.5;font-family:'돋움',dotum,sans-serif;color:#333} /* color값은 디자인가이드에 맞게사용 */
+		a{color:#333;text-decoration:none}
+		a:active, a:hover{text-decoration:underline}
+		a:active{background-color:transparent}
+		address,caption,cite,code,dfn,em,var{font-style:normal;font-weight:normal}
+		#kakaoIndex{overflow:hidden;position:absolute;left:-9999px;width:0;height:1px;margin:0;padding:0} /* 스킵네비게이션 */
+		.ir_pm{display:block;overflow:hidden;font-size:0;line-height:0;text-indent:-9999px} /* PC용 사용된 이미지내 의미있는 텍스트의 대체텍스트를 제공할때 */
+		.ir_wa{display:block;overflow:hidden;position:relative;z-index:-1;width:100%;height:100%} /* 중요한 이미지 대체텍스트로 이미지off시에도 대체 텍스트를 보여주고자 할때 */
+		.ir_caption{overflow:hidden;width:1px;font-size:1px;line-height:0;text-indent:-9999px} /* Table caption에 숨김텍스트를 제공할때 */
+		.screen_out{overflow:hidden;position:absolute;width:0;height:0;line-height:0;text-indent:-9999px} /* 대체텍스트가 아닌 접근성을 위한 숨김텍스트를 제공할때 */
+		.show{display:block}
+		.hide{display:none}
+
+		.mileage_type1{width:978px;margin:0 auto;padding-top:34px}
+
+		.mileage_type1 .img_header{
+			display: block;overflow: hidden;text-indent: -9999px;background-image:url(images/mileagehome_banner.png);background-repeat: no-repeat;
+		}
+		.mileage_type1 .btn_common{display: block;overflow: hidden;text-indent: -9999px;background-image:url(images/mileagehome_commonbtns.png);background-repeat: no-repeat
+		}
+		.mileage_type1 .btn_boxbtns{display: block;overflow: hidden;text-indent: -9999px;background-image:url(images/mileagehome_btns.png);background-repeat: no-repeat
+		}
+		.mileage_type1 .img_mileage{display: block;overflow: hidden;text-indent: -9999px;background-image:url(images/mileagehome_longtxt.png);background-repeat: no-repeat
+		}
+
+		/* banner*/
+		.mileage_type1 .board_bnr{overflow: hidden;padding:15px 0 18px 12px}
+		.mileage_type1 .tit_mghome{overflow:hidden;float:left}
+		.mileage_type1 .img_logo{float:left;width:68px;height:31px;background-position:-1px 2px}
+		.mileage_type1 .img_serviecelogo{float:left;width:99px;height:31px;background-position:6px -35px}
+		.mileage_type1 .fld_search{float:left}
+		.mileage_type1 .tf_search{float:left;height:32px;margin-left:13px;background-position:0 -69px}
+		.mileage_type1 .inp_search{float:left;height:25px;width:249px;margin:4px 2px 2px;border:none;background-color:transparent}
+		.mileage_type1 .btn_search{overflow:hidden;float:left;width:39px;height:31px;margin-left:18px;border:1px solid #ebebeb;border-radius:5px;text-indent: -9999px}
+		.mileage_type1 .txt_totsearch{float:left;height:15px;margin:10px 0 6px 9px;border-bottom:1px solid #767992;color:#767992}
+		.mileage_type1 .box_rel{float:right;margin-top:14px}
+		.mileage_type1 .link_shopping{width:50px;background-position: 0px 0px}
+
+
+		/*gnb nav*/
+		.mileage_type1 .box_mileagenav{position: relative;line-height:38px;}
+		.mileage_type1 .list_nav li{float:left}
+		.mileage_type1 .list_nav{overflow:hidden;background-position:0px 0px}
+		.mileage_type1 .link_nav.on{background-position:0px -38px;background-image:url("images/mileagehome_gnb.gif");background-repeat:no-repeat;}
+		.mileage_type1 .link_nav{display:block;height:38px;width:99px;text-align:center;padding:0 1px;font-size: 13px;text-align: center}
+		/* gnb_nav의 이미지 다시 자르기 미친 머리 좀더 써서 */
+		.mileage_type1 .img_gnb{overflow: hidden;height: 38px;background-image:url("images/mileagehome_gnb.gif");background-repeat:no-repeat;text-indent: -9999px}
+
+		.mileage_type1 .link_ad{position: absolute;top:9px;right:11px;width:175px;height:19px;background-position:0px -18px}
+
+
+		/*cMain*/
+		.mileage_type1	.box_banner{float:left;position:relative}
+		.mileage_type1  .cont_mileage{padding-top:10px}
+		.mileage_type1	.main_mileage{overflow: hidden}
+		.mileage_type1	.article_mileage{width:728px}
+		.mileage_type1  .img_bnr{display:block;vertical-align:top}
+		.mileage_type1	.link_detail{position: absolute;bottom:103px;left:60px;width:110px;height:36px;background-position: 0px -29px}
+		.mileage_type1	.board_btn{overflow:hidden;position:absolute;bottom:177px;width:701px;padding:0 13px}
+		.mileage_type1	.board_radio{position:absolute;bottom:20px;width:100%;line-height:0}
+		.mileage_type1	.inner_radio{display:block;width:50px;height:12px;margin:0px auto}
+		.mileage_type1	.btn_prev{float:left;width:25px;height:44px;background-position:-50px -20px}
+		.mileage_type1	.btn_next{float:right;width:25px;height:44px;background-position:-90px -20px}
+		.mileage_type1	.radio_bnr{float:left;width:12px;height:12px;margin-left:4px;background-position: 0px -40px;cursor:pointer}
+		.mileage_type1	.radio_bnr.on{background-position: 0px -20px}
+		.mileage_type1	.board_milegservice{overflow:hidden;float:left;margin-top:9px;border:1px solid #ebebeb}
+		.mileage_type1	.box_info{float:left;width:222px;height:153px;padding:20px 0 0 20px}
+		.mileage_type1	.box_intro{background-image:url("images/mileage_homeintro.gif")}
+		.mileage_type1	.tit_intro{width:120px;height:15px;margin-bottom:12px;background-position: 0px -40px}
+		.mileage_type1	.box_howto{border-right: 1px solid #ebebeb;border-left:1px solid #ebebeb;background-image:url("images/mileage_homehowto.gif")}
+		.mileage_type1	.tit_howto{width:120px;height:15px;margin-bottom:12px;background-position: 0px -60px}
+		.mileage_type1	.box_check{width:220px;background-image:url("images/mileage_homecheck.gif")}
+		.mileage_type1	.tit_check{width:125px;height:15px;margin-bottom:12px;background-position: 0px -80px}
+		.mileage_type1	.link_intro{width:100px;height:12px;background-position: 0px -99px}
+		.mileage_type1	.link_join{width:100px;height:12px;margin-top:7px;background-position: 0px -119px}
+		.mileage_type1	.link_howto{width:100px;height:12px;background-position: 0px -140px}
+		.mileage_type1	.link_check{width:100px;height:12px;background-position: 0px -159px}
+
+		/*asides top*/
+
+		/*login
+			height 5px 작게
+		*/
+
+		.mileage_type1 	.txt_ellipsis{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+		.mileage_type1	.side_mileage{overflow:hidden;padding-left:10px}
+		.mileage_type1	.board_login{border: 1px solid #ebebeb}
+		.mileage_type1	.info_mymileage{overflow:hidden;padding: 15px 10px 2px 10px}
+		.mileage_type1	.info_login{padding:14px 9px 6px 20px;border-bottom: 1px solid #ebebeb;line-height:24px}
+		.mileage_type1	.name_login{float:left;width:68px;font-weight: bold}
+		.mileage_type1	.btn_logout{float:right;width:46px;height:17px;border:1px solid #ebebeb;background-position:-3px 0px}
+		.mileage_type1	.desc_usable{width:92px;height: 12px;background-position:0px -180px}
+		.mileage_type1	.type_notuser .desc_usable{width:92px;background-position:0px -239px}
+		.mileage_type1	.type_login .box_nums{overflow:hidden;padding:0px 0 6px 8px}
+		.mileage_type1	.type_notuser .box_nums{height:27px;margin-top:9px;background-position:0px -260px}
+
+		.mileage_type1  .btn_mileagejoin{width:200px;height: 38px;margin: 0 auto;background-position:0px -120px}
+		.mileage_type1	.box_smallnums{overflow:hidden;padding:10px 0 8px 10px;border-top:1px solid #ebebeb}
+		.mileage_type1	.inner_nums{float:right}
+		.mileage_type1	.box_nums .inner_nums{margin-top:9px}
+		.mileage_type1	.inner_nums .btn_common{float:left}
+		.mileage_type1	.num_mileage{width:12px;height:21px}
+		.mileage_type1	.num_mileage.one{background-position: -20px -70px}
+		.mileage_type1	.num_mileage.nine{width:16px;background-position: -180px -140px}
+		.mileage_type1	.num_mileage.three{width:16px;background-position: -60px -140px}
+		.mileage_type1	.num_mileage.eight{width:17px;background-position: -160px -140px}
+		.mileage_type1	.num_mileage.five{width:18px;background-position: -99px -140px}
+		.mileage_type1	.num_mileage.zero{width:18px;background-position: -199px -140px}
+
+		.mileage_type1	.box_smallnums .inner_nums{height: 12px}
+		.mileage_type1	.box_smallnums .num_mileage.zero{width:11px;height:13px;background-position:-190px -200px}
+		.mileage_type1	.box_smallnums .num_mileage.one{width:8px;height:13px;background-position:-19px -200px}
+		.mileage_type1	.box_smallnums .num_mileage.two{width:10px;height:13px;background-position:-30px -200px}
+		.mileage_type1	.box_smallnums .num_mileage.five{width:11px;height:13px;background-position:-90px -200px}
+		.mileage_type1	.box_smallnums .num_mileage.eight{width:12px;height:13px;background-position:-149px -200px;}
+
+		.mileage_type1	.desc_saving{float:left;width:80px;height:12px;margin-top:1px;background-position:0px -199px}
+		.mileage_type1	.desc_extinction{float:left;width:80px;height:12px;margin-top:1px;background-position:0px -219px;}
+
+
+		.mileage_type1	.num_unit{width:8px;height:12px;margin-top:12px;background-position:2px -65px}
+		.mileage_type1	.txt_mile{float:left;width:20px;background-position: -37px 1px;}
+		.mileage_type1	.box_nums .txt_mile{width:20px;height:13px;margin-top:12px}
+		.mileage_type1	.box_smallnums .num_mileage{height:18px}
+		/*마일리지 비회원*/
+
+		.mileage_type1  .type_notuser .info_mymileage{padding:15px 20px 14px}
+		.mileage_type1	.type_notuser.board_login{padding-bottom:18px}
+
+
+
+		.mileage_type1	.type_notlogin .info_login{padding:20px 20px 14px;line-height:0}
+
+		.mileage_type1 .inner_login{height: 27px;margin-bottom:13px; background-position: 0px -300px}
+		.mileage_type1 .btn_login{width: 200px;height: 38px;margin: 0 auto;background-position: 0px -69px}
+		.mileage_type1 .board_join{padding:16px 20px}
+		.mileage_type1 .link_simplejoin{height:12px;background-position:0px -330px}
+		.mileage_type1 .link_daumjoin{height:12px;margin-top:9px;background-position:0px -350px}
+		.mileage_type1 .info_notice{margin-top: 20px}
+		.mileage_type1 .board_notice{overflow:hidden;padding-right:4px;border-bottom: 1px solid #ebebeb}
+
+
+		.mileage_type1 .nav_notice{float:left}
+		.mileage_type1 .nav_notice li{float:left}
+		.mileage_type1 .tab_notice{display:block;height:26px;width:80px;background-position: 1px -170px}
+		.mileage_type1 .tab_faq{display:block;height:25px;width:77px;background-position: 0px -211px;border:1px solid #ebebeb;border-bottom: none}
+		.mileage_type1 .more_notice{float:right;width:34px;height:12px;margin-top:10px}
+
+		.mileage_type1 .list_notice{padding:14px 0 0 11px;}
+		.mileage_type1 .link_notice{display:block;padding:1px 0 4px 0}
+
+		.mileage_type1 .info_event{margin-top:31px;border:1px solid #ebebeb}
+		.mileage_type1 .tit_event{float:left;width:112px;height:12px;margin-top:2px;background-position:0px -370px}
+		.mileage_type1 .board_event{overflow:hidden;padding:8px 9px 5px 18px}
+		.mileage_type1 .info_page{float:right;width:53px}
+		.mileage_type1 .num_page{float:left;width:9px;background-position:2px -217px}
+		.mileage_type1 .num_totpage{float:left;width:13px;background-position:-20px -218px}
+		.mileage_type1 .box_btn{float:left;width:26px;margin-left:5px;background-position:-20px -20px;}
+		.mileage_type1 .prev_event{overflow:hidden;text-indent:-9999px;float:left;width:13px}
+		.mileage_type1 .next_event{overflow:hidden;text-indent:-9999px;float:left;width:13px}
+		.mileage_type1 .img_event{vertical-align: top}
+		.mileage_type1 .link_event{display:block;border-top:1px solid #ebebeb}
+		.mileage_type1 .dot_notice{float:left;width: 4px;background-position: -19px -33px;line-height:12px}
+		.mileage_type1 .txt_state{margin:0 10px 0 5px}
+		/*footer*/
+		.mileage_type1 .f_mileagehome{text-align:center;padding-top:50px}
+		.mileage_type1 .board_franchisee{overflow:hidden;height:34px;line-height:35px;border-top:2px solid #999999;border-bottom:1px solid #ebebeb;background-color:#fafafa}
+		.mileage_type1 .tit_franchisee{float:left;margin:10px 11px 0 13px;width:82px;background-position:0px -389px;}
+		.mileage_type1 .txt_bar{margin-right:11px;color:#e1e1e1}
+		.mileage_type1 .board_franchisee .txt_bar{float:left}
+		.mileage_type1 .link_franchisee{float:left;padding-right:10px;color:#666;letter-spacing:1px}
+		.mileage_type1 .board_servieces{padding:17px 0 4px}
+		.mileage_type1 .link_services{margin-right:10px}
+
+
+	</style>
+</head>
+<body>
+<div id="kakaoIndex"><!-- 웹접근성용 바로가기 링크 모음 -->
+	<a href="#kakaoBody">본문 바로가기</a>
+	<a href="#kakaoGnb">메뉴 바로가기</a>
+</div>
+<div id="kakaoWrap" class="mileage_type1"><!-- position:relative 적용 / 레이아웃 관련 클래스 적용 -->
+	<div id="kakaoHead"  role="banner">
+		<div class="board_bnr">
+			<h1 class="tit_mghome">
+				<a href="#none" id="daumLogo" class="img_header img_logo">다음 로고</a>
+				<a href="#none" id="kakaoServiceLogo" class="img_header img_serviecelogo">마일리지</a>
+			</h1>
+			<form action="" class="img_header tf_search">
+				<fieldset class="fld_search">
+					<legend class="screen_out">검색어 입력폼입니다</legend>
+					<input type="text" title="통합검색" class="inp_search">
+					<button type="submit" class="btn_search">검색</button>
+				</fieldset>
+			</form>
+			<a href="#none" class="txt_totsearch">통합검색</a>
+			<ul id="kakaoRelServices" class="box_rel">
+				<li><a href="#none" class="img_mileage link_shopping">쇼핑하우</a></li>
+			</ul>
+			<!--RelService is 무엇!?-->
+		</div>
+		<div id="kakaoGnb" role="navigation" class="box_mileagenav">
+			<h2 class="screen_out">마일리지 메인메뉴</h2>
+			<ul class="img_gnb list_nav">
+				<li><a href="#none" class="link_nav on"><span class="ir_wa">마일리지홈</span></a></li>
+				<li><a href="#none" class="link_nav"><span class="ir_wa">마일리지 안내</span></a></li>
+				<li><a href="#none" class="link_nav"><span class="ir_wa">마이 페이지</span></a></li>
+				<li><a href="#none" class="link_nav"><span class="ir_wa">이벤트/혜택</span></a></li>
+				<li><a href="#none" class="link_nav"><span class="ir_wa">고객센터</span></a></li>
+			</ul>
+			<a href="#none" class="img_mileage link_ad">마일리지 가입시 오천마일 적립!</a>
+		</div>
+	</div>
+	<hr class="hide">
+	<div id="kakaoContent" class="cont_mileage" role="main"><!-- 대메뉴별(폴더명) 관련 클래스 적용 -->
+		<!-- 알아서 구성 -->
+		<div id="cMain"  class="main_mileage">
+			<div id="mArticle" class="article_mileage">
+				<h2 id="kakaoBody" class="screen_out">마일리지홈</h2><!-- kakaoBody 본문바로가기 링크임 - 페이지별 위치 및 element 명은 서비스에 맞게 변경하여 사용-->
+				<div class="box_banner">
+					<ul>
+						<li>
+							<img src="images/mileage_mainbanner.gif" class="img_bnr" alt="">
+							<p class="ir_pm">마일리지 첫 거래 <em>2,000마일 혜택!</em> daum 마일리지 가입하신 모든 분계 현금 처럼 바로 쓸 수 있는 2,000마일을 드립니다.</p>
+							<a href="#none" class="btn_boxbtns link_detail">자세히 보기</a>
+							<div class="board_radio">
+								<span class="inner_radio">
+									<span class="radio_bnr btn_common on"></span>
+									<span class="radio_bnr btn_common"></span>
+									<span class="radio_bnr btn_common"></span>
+								</span>
+							</div>
+						</li>
+					</ul>
+					<div class="board_btn">
+						<button type="button" class="btn_common btn_prev">
+							<span class="ir_wa">이전</span></button>
+						<button type="button" class="btn_common btn_next">
+							<span class="ir_wa">다음</span>
+						</button>
+					</div>
+				</div>
+				<div class="board_milegservice">
+					<div class="box_info box_intro">
+						<h3 class="img_mileage tit_intro">daum 마일리지란</h3>
+						<ul>
+							<li><a href="#none" class="img_mileage link_intro">마일리지 소개</a></li>
+							<li><a href="#none" class="img_mileage link_join">간단가입방법</a></li>
+						</ul>
+					</div>
+					<div class="box_info box_howto">
+						<h3 class="img_mileage tit_check">나의 마일리지 조회</h3>
+						<a href="#none" class="img_mileage link_check">상세 내역 조회</a>
+					</div>
+					<div class="box_info box_check">
+						<h3 class="img_mileage  tit_howto">마일리지 사용방법</h3>
+						<a href="#none" class="img_mileage link_howto">적립 및 사용방법</a>
+					</div>
+				</div>
+			</div>
+			<div id="mAside" class="side_mileage">
+				<h2 class="screen_out">로그인</h2>
+				<div class="board_login type_login">
+					<div class="info_login">
+						<strong class="screen_out">로그인상태입니다.</strong>
+						<span class="name_login txt_ellipsis">일이삼사오육칠팔구십</span><span>님 환영합니다.</span><!--로그인-->
+						<a href="#none" class="btn_boxbtns btn_logout">로그아웃</a>
+					</div>
+					<div class="info_mymileage">
+						<div class="box_nums">
+							<em class="img_mileage desc_usable">사용가능 마일리지</em>
+							<span class="inner_nums">
+								<em class="btn_common num_mileage one">1</em>
+								<em class="btn_common num_mileage nine">9</em>
+								<em class="btn_common num_mileage three">3</em>
+								<em class="btn_common num_unit">,</em>
+								<em class="btn_common num_mileage eight">8</em>
+								<em class="btn_common num_mileage five">5</em>
+								<em class="btn_common num_mileage zero">0</em>
+								<span class="btn_common txt_mile">마일</span>
+							</span>
+						</div>
+						<div class="box_smallnums">
+							<em class="img_mileage desc_saving">적립예정 마일리지</em>
+							<span class="inner_nums">
+								<em class="btn_common num_mileage two">2</em>
+								<em class="btn_common num_mileage five">5</em>
+								<em class="btn_common num_mileage zero">0</em>
+								<span class="btn_common txt_mile">마일</span>
+							</span>
+						</div>
+						<div class="box_smallnums">
+							<em class="img_mileage desc_extinction">소멸예정 마일리지</em>
+							<span class="inner_nums">
+								<em class="btn_common num_mileage one">1</em>
+								<em class="btn_common num_mileage eight">8</em>
+								<em class="btn_common num_mileage zero">0</em>
+								<span class="btn_common txt_mile">마일</span>
+							</span>
+						</div>
+					</div>
+				</div>
+				<!--마일리지 비회원-->
+				<div class="board_login type_notuser" style="display: none">
+					<div class="info_login">
+						<strong class="screen_out">마일리지 비회원입니다.</strong>
+						<span class="name_login txt_ellipsis">일이삼사오육칠팔구십</span><span>님 환영합니다.</span><!--로그인-->
+						<a href="#none" class="btn_boxbtns btn_logout">로그아웃</a>
+					</div>
+					<dl class="info_mymileage">
+						<dt class="img_mileage desc_usable">Daum 마일리지란?</dt>
+						<dd class="img_mileage box_nums">
+							<p>Daum 마일리지는 옥션,G마켓,11번가에서 적립받고 사용할수 있는 통합적립금입니다.</p>
+						</dd>
+					</dl>
+					<button type="button" class="btn_boxbtns btn_mileagejoin">Daum마일리지 간편가입</button>
+				</div>
+				<!--마일리지 비회원-->
+
+				<!--비로그인-->
+				<div class="board_login type_notlogin" style="display: none">
+					<div class="info_login">
+						<strong class="screen_out">Daum 로그인을 해주세요</strong>
+						<div class="img_mileage inner_login">
+							<p class="ir_pm">로그인하면 오픈마켓에서 적립받고 사용한 내마일리지 현황을 한눈에 볼수있습니다</p><!--로그인-->
+						</div>
+						<button href="#none" type="button" class="btn_boxbtns btn_login">Daum 아이디로 로그인 해주세요.</button>
+					</div>
+					<div class="board_join">
+						<a href="#none" class="img_mileage link_simplejoin">마일리지 서비스 간편가입</a>
+						<a href="#none" class="img_mileage link_daumjoin">daum 아이디가 없다면</a>
+					</div>
+				</div>
+				<!--비로그인-->
+
+				<div class="info_notice">
+					<div class="board_notice">
+						<h2 class="screen_out">공지사항입니다.</h2>
+						<ul class="nav_notice">
+							<li><a href="#none" class="btn_boxbtns tab_notice">공지사항</a></li>
+							<li><a href="#none" class="btn_boxbtns tab_faq">FAQ</a></li>
+						</ul>
+						<a href="#none" class="btn_common more_notice">더보기</a>
+					</div>
+					<ul class="list_notice">
+						<li><a href="#none" class="txt_ellipsis link_notice"><span class="btn_common dot_notice">&middot;</span><span class="txt_state">[일반]</span>일이삼사오육칠팔구십일이삼사일이삼사오육칠팔구십일이삼사일이삼사오육칠팔구십일이삼사일이삼사오육칠팔구십일이삼사</a></li>
+						<li><a href="#none" class="txt_ellipsis link_notice"><span class="btn_common dot_notice">&middot;</span><span class="txt_state">[일반]</span>시스템 점검으로 인한 서비스 이상어쩌구 저쩌구로 인하여</a></li>
+						<li><a href="#none" class="txt_ellipsis link_notice"><span class="btn_common dot_notice">&middot;</span><span class="txt_state">[일반]</span>Daum 마일리지 모바일서비스가 어쩌구저쩌구</a></li>
+						<li><a href="#none" class="txt_ellipsis link_notice"><span class="btn_common dot_notice">&middot;</span><span class="txt_state">[일반]</span>6월 체크아웃 쇼핑클래스 혜택있으면 날 줘요</a></li>
+						<li><a href="#none" class="txt_ellipsis link_notice"><span class="btn_common dot_notice">&middot;</span><span class="txt_state">[일반]</span>Daum 마일리지 모바일서비스가 어쩌구저쩌구</a></li>
+						<li><a href="#none" class="txt_ellipsis link_notice"><span class="btn_common dot_notice">&middot;</span><span class="txt_state">[일반]</span>6월 체크아웃 쇼핑클래스 혜택있으면 날 줘요</a></li>
+					</ul>
+				</div>
+				<div class="info_event">
+					<div class="board_event">
+						<h2 class="img_mileage tit_event">이벤트/추가적립혜택</h2>
+						<div class="info_page">
+							<span class="btn_common num_page">1</span><spna class="btn_common num_totpage">/3</spna>
+							<div class="btn_common box_btn">
+								<button type="button" class="prev_event">&lt</button><button type="button" class="next_event">&gt</button>
+							</div>
+						</div>
+					</div>
+					<ul class="list_event">
+						<li>
+							<a href="#none" class="link_event img_event1">
+								<img src="images/mileage_nikeevent.gif" class="img_event" alt="나이키 제휴할인 특별혜택 무료배송">
+							</a>
+						</li>
+						<li>
+							<a href="#none" class="link_event img_event2">
+								<img src="images/mileage_guccievent.gif" class="img_event" alt="지금 마일리지 가입하면 구찌 가방이 공짜!">
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<hr class="hide">
+		<div id="kakaoFoot" role="contentinfo" class="f_mileagehome">
+			<h2 class="screen_out">서비스 이용정보</h2>
+			<div class="board_franchisee">
+				<strong class="img_mileage tit_franchisee">마일리지 가맹점</strong>
+				<!--<div class="board_link">-->
+					<a href="#none" class="link_franchisee">11번가</a><span class="txt_bar">|</span><a href="#none" class="link_franchisee">옥션</a><span class="txt_bar">|</span><a href="#none" class="link_franchisee">G마켓</a><span class="txt_bar">|</span><a href="#none" class="link_franchisee">Daum게임</a><span class="txt_bar">|</span><a href="#none" class="link_franchisee">Daum뮤직</a>
+				<!--</div>-->
+			</div>
+			<div class="board_servieces">
+				<strong class="screen_out">마일리지 주요 서비스</strong><a href="#none" class="link_services">마일리지 서비스약관</a><span class="txt_bar">|</span><a href="#none" class="link_services">FAQ</a><span class="txt_bar">|</span><a href="#none" class="link_services">1:1문의</a><span class="txt_bar">|</span><a href="#none" class="link_services">가입/해지 안내</a>
+			</div>
+			<small>Copyright(c) Daum Communications. All rights reserved</small>
+		</div>
+		<div id="wrapMinidaum">
+			<script async="" src="http://go.daum.net/jsa_minidaum_pc.daum" charset="utf-8" type="text/javascript"></script>
+			미니다음
+		</div>
+	</div>
+</div>
+</body>
+</html>
+
+
+
+
+

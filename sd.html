@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+@charset "UTF-8";
+/* ** 쇼핑개편 시작 :grey ** */
+/* 섬네일영역 */
+#shoppingNColl .coll_tit{position:relative}
+#shoppingNColl .frame_info{position:absolute;left:0;bottom:0;width:100%;height:100%;color:#fff}
+#shoppingNColl .thumb_total .frame_info{background-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.1)), to(rgba(0, 0, 0, 0.4)));background-image:-moz-linear-gradient(top, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4));background-image:-o-linear-gradient(top, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4));background-image:linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4))}
+#shoppingNColl .box_keyword .frame_info{background-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.6)));background-image:-moz-linear-gradient(top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));background-image:-o-linear-gradient(top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));background-image:linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6))}
+#shoppingNColl .info_hot .frame_info{text-shadow:0 1px 1px rgba(0, 0, 0, 0.1);background-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.3)), to(rgba(0, 0, 0, 0.6)));background-image:-moz-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));background-image:-o-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));background-image:linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6))}
+#shoppingNColl .frame_info .inner_frame{position:absolute;bottom:4px;width:100%}
+#shoppingNColl .frame_info .txt_info{display:block;overflow:hidden;padding:0 3px;font-size:14px;line-height:1.28;word-break:break-all;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+#shoppingNColl .frame_info .txt_key{display:block;display:-webkit-box;display:-moz-box;display:-ms-flexbox;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2}
+#shoppingNColl .frame_info .txt_item{display:block;padding:27px 12px 10px;font-family:HelveticaNeue-Light,AppleSDGothicNeo-Light,sans-serif-light;text-align:center}
+#shoppingNColl .frame_info .tag_frame{display:inline-block;height:22px;margin-bottom:9px;padding:0 10px;border:1px solid rgba(255, 255, 255, 0.6);border-radius:20px;font-size:14px;line-height:1.6;background-color:rgba(0, 0, 0, 0.2);vertical-align:top}
+#shoppingNColl .frame_info .tit_frame{display:block;display:-webkit-box;display:-ms-flexbox;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;font-weight:600;font-size:20px;line-height:1.4;max-height:2.7em}
+#shoppingNColl .frame_badge{display:table;position:absolute;top:7px;right:8px;width:30px;height:30px;border-radius:100px;background:#f73e47}
+#shoppingNColl .frame_badge .txt_info{display:table-cell;font-weight:bold;font-size:10px;line-height:1.1;color:#fff;text-align:center;vertical-align:middle}
+#shoppingNColl .frame_badge .txt_num{font-size:12px}
+#shoppingNColl .frame_badge .txt_unit{font-weight:normal;font-size:10px}
+#shoppingNColl .frame_rank{display:table;position:absolute;top:0;left:0;width:20px;height:20px;background:#666}
+#shoppingNColl .frame_rank .txt_info{display:table-cell;padding-right:1px;font-style:italic;font-size:15px;line-height:1.2;color:#fff;text-align:center;vertical-align:middle;letter-spacing:-1px;text-indent:-3px}
+#shoppingNColl .coll_cont{overflow:hidden}
+#shoppingNColl .coll_cont::before{display:block;margin-bottom:-1px;content:''}
+#shoppingNColl .thumb_img{display:block}
+#shoppingNColl .info_item{display:block;overflow:hidden;background-color:#fff}
+#shoppingNColl .info_item::after{display:block;overflow:hidden;clear:both;content:''}
+#shoppingNColl .mg_comp14:first-child{padding-top:1px}
+#shoppingNColl .txt_sub{display:block;font-size:14px;color:#919191}
+#shoppingNColl .txt_bar{display:inline-block;overflow:hidden;height:10px;border-left:1px solid #d8d8d8;vertical-align:0;text-indent:-9999px}
+#shoppingNColl .subinfo_item{line-height:1.4}
+#shoppingNColl .subinfo_item .txt_item{display:inline-block;font-size:14px;color:#919191}
+#shoppingNColl .subinfo_item .txt_sub{display:inline;letter-spacing:-1px}
+#shoppingNColl .subinfo_item .ico_store{margin:1px 0 0 0}
+#shoppingNColl .subinfo_item .ico_gift2{margin:2px 0 0 0}
+#shoppingNColl .tit_main{display:block;display:-webkit-box;display:-ms-flexbox;overflow:hidden;max-height:2.5em;margin-right:0;font-size:17px;-webkit-box-orient:vertical;-webkit-line-clamp:2;word-break:break-all;color:#000}
+#shoppingNColl .tit_item{display:block;display:-webkit-box;display:-ms-flexbox;overflow:hidden;max-height:39px;font-weight:normal;line-height:1.28;-webkit-box-orient:vertical;-webkit-line-clamp:2;word-break:break-all;color:#000}
+#shoppingNColl .info_sub{position:relative;overflow:hidden;height:47px;/* 2017-10-23 gilbert 40 -> 47 */ padding:13px 15px;/* 2017-10-23 gilbert */ border:1px solid rgba(0, 0, 0, 0.08);border-top:0 none;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;white-space:nowrap;word-break:break-all;text-overflow:ellipsis}
+#shoppingNColl .info_sub .txt_item{font-size:14px;color:#555;vertical-align:top}
+#shoppingNColl .info_sub a.txt_item{display:inline-block}
+#shoppingNColl .info_sub .btn_gift{display:inline-block;font-size:14px;color:#333;vertical-align:top}
+#shoppingNColl .info_sub .ico_gift2{margin-top:2px}
+#shoppingNColl .info_sub .ico_delivery{width:18px;height:12px;margin-top:4px;background:url(https://search1.daumcdn.net/search/statics/common/mi/coll/ico_shoppingNColl.png) no-repeat 0 0;-webkit-background-size:16px 12px;background-size:16px 12px}
+#shoppingNColl .info_sub .txt_bar{margin:0 2px 0 3px}
+#shoppingNColl .dl_comp{margin:0}
+#shoppingNColl .dl_comp dt{font-size:14px}
+#shoppingNColl .dl_comp dd{font-size:14px;color:#555}
+#shoppingNColl .tit_base{margin-right:4px}
+#shoppingNColl .item_bundle, #shoppingNColl .dl_bundle{margin-top:0px;/* 2017-11-13 gilbert 수정 */ }
+#shoppingNColl .item_bundle .txt_bar{margin:0 2px}
+#shoppingNColl .dl_bundle .dl_comp:not(:last-child)::after{float:left;height:10px;margin:4px 8px 0;border-left:1px solid #d8d8d8;content:''}
+#shoppingNColl .extend_comp + .mg_comp14{border-top:1px solid #ebebeb}
+#shoppingNColl .extend_comp2{margin-top:-14px}
+#shoppingNColl .extend_comp2 .extender{text-align:right}
+#shoppingNColl .extend_comp2 .extender:only-child{left:0}
+#shoppingNColl .extend_comp .fold .ico_extend::before{border-top-color:transparent}
+#shoppingNColl .extend_comp .ico_kakao{margin:2px 0 0 0}
+#shoppingNColl .box_keyword{margin-bottom:15px;background-color:#fff}
+#shoppingNColl .box_keyword .thumb_img{width:70px}
+#shoppingNColl .box_keyword .txt_info{padding-left:4px;padding-right:2px}
+#shoppingNColl .box_keyword .frame_info .txt_key{height:2.1em;line-height:1.1;letter-spacing:-1px}
+#shoppingNColl .box_keyword li.col-g3{width:73px;padding-right:3px;padding-left:0}
+#shoppingNColl .box_keyword li.col-g3:first-child{margin-left:-12px}
+#shoppingNColl .coll_etc .box_keyword{margin-bottom:0;border-bottom:0 none;background-color:#f5f5f5}
+#shoppingNColl .list_shop li{margin-bottom:10px;background-color:#fff}
+#shoppingNColl .mg_comp14:last-child .list_shop li:last-child{margin-bottom:15px}
+#shoppingNColl .list_shop .wrap_thumb{/* 2017-10-23 gilbert width:36%;*/ float:right;min-width:120px;padding-right:0;padding-left:0}
+#shoppingNColl .list_shop .wrap_cont{overflow:hidden;padding:17px 15px 10px 16px;/* 2017-10-23 gilbert 수정 -> */ }
+#shoppingNColl .list_shop .txt_price{font-size:16px}
+#shoppingNColl .list_shop .info_item{position:relative}
+#shoppingNColl .list_shop .info_item::after{position:absolute;top:0;left:0;width:100%;height:100%;border:1px solid rgba(0, 0, 0, 0.08);border-bottom-color:rgba(0, 0, 0, 0.04);-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;content:''}
+#shoppingNColl .list_shop .info_item:only-child::after{border-bottom-color:rgba(0, 0, 0, 0.1)}
+#shoppingNColl .list_shop .wrap_tit + .subinfo_item{margin-top:0;/* 2017-10-23 gilbert 변경*/ }
+#shoppingNColl .list_shop .item_price{display:block;overflow:hidden;margin-top:5px;/* 2017-10-23 gilbert 추가 */ text-overflow:ellipsis;white-space:nowrap;color:#919191}
+#shoppingNColl .box_theme{overflow:hidden;margin:0 14px 10px;padding-bottom:15px;border:1px solid rgba(0, 0, 0, 0.08);background-color:#fff}
+#shoppingNColl .theme_tit{position:relative;padding:14px;border-bottom:1px solid rgba(0, 0, 0, 0.08);line-height:1}
+#shoppingNColl .theme_tit .tit{font-size:15px}
+#shoppingNColl .theme_tit .more_etc{position:absolute;top:0;left:0;width:100%;height:100%;font-size:13px;color:#919191;text-align:right}
+#shoppingNColl .theme_tit .txt_more{display:inline-block;margin:17px 12px 0 0;vertical-align:top}
+#shoppingNColl .theme_tit .ico_circomp{float:right;margin:14px 13px 0 0}
+#shoppingNColl .theme_tab{padding:10px 10px 0}
+#shoppingNColl .list_rank{overflow:hidden;width:100%}
+#shoppingNColl .list_rank .thumb{overflow:hidden;position:relative;border-radius:500px}
+#shoppingNColl .list_rank .thumb_img{border-radius:500px}
+#shoppingNColl .list_rank .thumb::after{position:absolute;top:0;left:0;width:100%;height:100%;border:1px solid rgba(0, 0, 0, 0.08);border-radius:500px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;content:''}
+#shoppingNColl .list_rank .wrap_cont{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;word-break:break-all;color:#000;text-align:center}
+#shoppingNColl .list_rank .txt_num{font-size:16px;font-style:italic}
+#shoppingNColl .list_rank .subinfo_item{margin-top:-1px}
+#shoppingNColl .list_rank .wrap_cont + .wrap_thumb{margin-top:3px;padding:0 12px}
+#shoppingNColl .box_info{position:relative;margin-bottom:4px}
+#shoppingNColl .box_info > a{display:block}
+#shoppingNColl .info_hot .frame_info .inner_frame{bottom:15px}
+#shoppingNColl .cont_shop{overflow:hidden;margin:1px 11px 0}
+#shoppingNColl .cont_shop::after{display:block;overflow:hidden;clear:both;content:''}
+#shoppingNColl .cont_shop .cell_area{float:left;width:50%;padding:0 2px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+#shoppingNColl .cont_shop .frame_info .txt_info{padding:0 10px;font-size:14px}
+#shoppingNColl .cont_shop .ico_more{width:5px;height:8px;margin:5px 0 0 7px;background-position:-14px -22px}
+#shoppingNColl .cont_shop .subinfo_item{margin-top:7px;/* 2017-10-23 gilbert 수정 */ }
+#shoppingNColl .cont_shop .txt_price{display:inline-block;vertical-align:top;margin-bottom:5px;/* gilbert margin 추가*/ }
+#shoppingNColl .cont_shop .txt_price + .dl_comp{margin-top:6px}
+#shoppingNColl div.list_product{overflow:hidden}
+#shoppingNColl .list_product::after{display:block;overflow:hidden;clear:both;content:''}
+#shoppingNColl .list_product .info_item .wrap_cont{padding:14px 12px;border:1px solid rgba(0, 0, 0, 0.08);border-top:none}
+#shoppingNColl .list_product .tit_item{font-size:16px}
+#shoppingNColl .list_product .txt_sub{overflow:hidden;white-space:nowrap;word-break:break-all;text-overflow:ellipsis}
+#shoppingNColl .list_product .txt_store{overflow:hidden;margin:0 0 -1px 0;/* 2017-11-13 gilber 수정*/ white-space:nowrap;word-break:break-all;text-overflow:ellipsis;color:#555}
+#shoppingNColl .cont_shop .extend_comp2{display:none}
+#shoppingNColl .cont_shop .extend_comp{min-height:0;height:49px;margin:0 2px 15px;border:1px solid rgba(0, 0, 0, 0.08);background-color:#fff}
+#shoppingNColl .cont_shop .extender{height:100%;padding-top:15px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+#shoppingNColl .cont_shop .extend_comp .ico_extend::before{border-top-color:#fff}
+#shoppingNColl .open_shop{height:auto}
+#shoppingNColl .open_shop .extend_comp:not(.extend_comp2){display:none}
+#shoppingNColl .open_shop .extend_comp2{display:block}
+#shoppingNColl .shop_fix .box_info .wrap_cont{height:85px}
+#shoppingNColl .shop_fix .box_info .tit_item{height:2.5em}
+#shoppingNColl .info_hot .txt_key{max-height:2.5em;opacity:0.8;text-align:center}
+#shoppingNColl .info_hot .f_key{display:inline-block;vertical-align:top}
+#shoppingNColl .box_tab{padding:14px 0}
+#shoppingNColl .list_keyword li{float:left;margin-right:4px}
+#shoppingNColl .list_keyword .txt_key{display:inline-block;padding:7px 9px 7px;border:1px solid #ebebeb;border-radius:3px;font-size:15px;line-height:1.1;background:#ebebeb;color:#000;vertical-align:top}
+#shoppingNColl .list_keyword .on .txt_key{border-color:#f73e47;color:#f73e47;background:#fff}
+#shoppingNColl .info_btn{display:table;width:100%;height:41px;border:1px solid rgba(0, 0, 0, 0.08);border-top:0 none;background:#fff;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+#shoppingNColl .info_btn .btn_gift{display:block;overflow:hidden;padding:10px 0;text-align:center;color:#000;text-overflow:ellipsis;white-space:nowrap}
+#shoppingNColl .info_btn .ico_gift2{margin:2px 0 0 0}
+#shoppingNColl .info_best{border:1px solid rgba(0, 0, 0, 0.08);background-color:#fff}
+#shoppingNColl .best_tit{overflow:hidden;position:relative;width:100%;padding:13px 0 13px 14px;line-height:1;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+#shoppingNColl .best_tit .tit{font-size:15px}
+#shoppingNColl .best_tit .more_etc{position:absolute;top:0;left:0;width:100%;height:100%;text-align:right}
+#shoppingNColl .best_tit .more_etc .ico_circomp{margin:12px 14px 0 0}
+#shoppingNColl .list_best{border-top:1px solid rgba(0, 0, 0, 0.08)}
+#shoppingNColl .list_best li{margin:0 10px;border-top:1px solid rgba(0, 0, 0, 0.08);-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+#shoppingNColl .list_best li:first-child{border-top:0 none}
+#shoppingNColl .list_best .link_item{display:block;padding:6px 0}
+#shoppingNColl .list_best .link_item::after{display:block;overflow:hidden;height:0;clear:both;content:''}
+#shoppingNColl .list_best .wrap_thumb{float:left;width:36%;max-width:50px;margin:0 10px 0 5px}
+#shoppingNColl .list_best .thumb_img{overflow:hidden;border-radius:100px}
+#shoppingNColl .list_best .thumb_frame{border:1px solid rgba(0, 0, 0, 0.08);border-radius:100px}
+#shoppingNColl .list_best .wrap_cont{padding-top:5px}
+#shoppingNColl .list_best .tit_best{font-size:14px;line-height:1.4;color:#000}
+#shoppingNColl .list_best .tit_best + .txt_sub{margin-top:3px}
+#shoppingNColl .list_best .txt_num{float:left;margin-right:4px;font-style:italic;font-weight:bold}
+#shoppingNColl .list_best .txt_info{display:block;display:-webkit-box;display:-ms-flexbox;overflow:hidden;max-height:1.4em;-webkit-box-orient:vertical;-webkit-line-clamp:1;word-break:break-all}
+#shoppingNColl .info_best_num .link_item{padding:10px 5px 10px 2px}
+#shoppingNColl .info_best_num .txt_num{margin-top:-3px;font-weight:normal;font-size:16px;color:#f73e47}
+#shoppingNColl .info_best_num .txt_info{-webkit-line-clamp:2;max-height:2.5em;line-height:1.28}
+#shoppingNColl .info_best_num .wrap_thumb{float:right;max-width:35px;margin:0 0 0 4px}
+#shoppingNColl .info_best_num .wrap_cont{display:table;height:35px;padding-top:0}
+#shoppingNColl .info_best_num .tit_best{display:table-cell;padding-top:4px;vertical-align:middle}
+#shoppingNColl .coll_etc{overflow:hidden;margin:0;padding-bottom:15px}
+#shoppingNColl .coll_etc .coll_tit{position:relative;min-height:0;padding-bottom:9px}
+#shoppingNColl .coll_etc .coll_tit .ico_rwd{margin-top:4px;opacity:0.5}
+#shoppingNColl .coll_etc .more_etc{display:block;position:absolute;top:0;left:0;width:100%;height:100%;font-size:13px;color:#919191;text-align:right}
+#shoppingNColl .coll_etc .more_etc::after{display:none}
+#shoppingNColl .coll_etc .txt_more{display:inline-block;margin:28px 14px 0 0;vertical-align:top}
+#shoppingNColl .coll_etc .coll_cont::before{display:none}
+#shoppingNColl .coll_etc .cont_view{overflow:hidden}
+#shoppingNColl .cont_view .wrap_cont{padding:11px 10px 14px;border:1px solid rgba(0, 0, 0, 0.08);border-top:0 none}
+#shoppingNColl .cont_view .txt_sub{font-size:12px}
+#shoppingNColl .cont_view .tit_item{height:2.5em;font-size:14px}
+#shoppingNColl .cont_view .txt_sub + .tit_item{margin-top:2px}
+#shoppingNColl .cont_view .subinfo_item{margin-top:10px}
+#shoppingNColl .cont_view .txt_price{font-size:14px}
+#shoppingNColl .cont_view .txt_del{font-size:13px;color:#bdbdbd}
+/* 공통 */
+/* 메뉴(키워드) */
+/* 리스트(기본) */
+/* 테마박스 */
+/* 이미지형 */
+/* 선물하기 4개 고정노출형 */
+/* 기획전 카드 */
+/* 선물하기버튼 */
+/* 브랜드 베스트 카드 */
+/* 많이 찾는 가격대 카드 */
+/* 하단 - 소셜 상품 */
+/* 파폭대응 */
+.firefox #shoppingNColl .cont_view .list_thumb li{width:144px}
+.firefox #shoppingNColl .cont_view .list_thumb .info_item{width:140px}
+/* 하단 - 인기스타일 */
+#shoppingNColl .coll_etc .cont_shop{margin-top:0}
+#shoppingNColl .coll_etc + .coll_etc{margin-top:-15px}
+#shoppingNColl .coll_etc + .coll_etc .coll_tit{border-top:0 none}
+#shoppingNColl .coll_etc .extend_comp{margin-bottom:0}
+#shoppingNColl .thumb_total{overflow:hidden}
+#shoppingNColl .thumb_total .col-g4{margin-top:4px}
+#shoppingNColl .thumb_total .inner_frame{bottom:2px}
+#shoppingNColl .thumb_total .frame_info .txt_info{font-size:16px}
+#shoppingNColl .thumb_total + .extend_comp{border-top:0 none}
+#shoppingNColl .thumb_total + .extend_comp .extender{text-align:right}
+#shoppingNColl .wrap_tab{float:right;margin:20px 13px 0 0}
+#shoppingNColl .list_subtab{overflow:hidden;width:100%}
+#shoppingNColl .list_subtab li{float:left}
+#shoppingNColl .list_subtab li:not(:first-child)::before{display:inline-block;height:11px;margin-top:7px;border-left:1px solid #d8d8d8;content:''}
+#shoppingNColl .list_subtab .txt_item{display:inline-block;padding:4px 6px;border:1px solid transparent;line-height:1.1;color:#555;vertical-align:top}
+#shoppingNColl .list_subtab .on .txt_item{border-radius:20px;border-color:#fb9ea3;background-color:#fff;color:#f73e47}
+#shoppingNColl .list_subtab li.on::before, #shoppingNColl .list_subtab li.on + li::before{display:none}
+#shoppingNColl .cont_shop .flipsnap_item{overflow:hidden}
+#shoppingNColl .box_tag{margin:0 13px}
+#shoppingNColl .box_tag .coll_tit{margin-top:-15px;border-top:0 none}
+#shoppingNColl .box_tag .tit{text-indent:0}
+#shoppingNColl .box_tag .wrap_tag{overflow:hidden;padding:0;max-height:66px;font-size:0}
+#shoppingNColl .box_tag .txt_key{overflow:hidden;float:left;max-width:100%;margin:0 5px 7px 0;padding:7px 10px;border-radius:4px;font-size:13px;line-height:1.2;color:#fff;letter-spacing:-1px;text-overflow:ellipsis;white-space:nowrap;word-break:break-all;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+#shoppingNColl .box_tag .txt_key:nth-child(2n){background-color:#75a2ca}
+#shoppingNColl .box_tag .txt_key:nth-child(2n-1){background-color:#79cbba}
+#shoppingNColl .box_tag .txt_key:nth-child(3n){background-color:#79c1d8}
+/* 함께 찾는 검색어 */
+.firefox #shoppingNColl .box_tag .wrap_tag{display:block}
+/* 카드뷰 */
+.kc #shoppingNColl .item_bundle, .kc #shoppingNColl .dl_bundle{margin-top:4px}
+.kc #shoppingNColl .list_shop .wrap_tit + .subinfo_item{margin-top:5px}
+.kc #shoppingNColl .info_btn [class*="btn_"]{display:table-cell;width:50%;text-align:center;color:#000}
+.kc #shoppingNColl .info_btn .btn_share::before{float:left;height:13px;margin-top:3px;border-left:1px solid #ebebeb;content:''}
+.kc #shoppingNColl .coll_etc .txt_del{display:block}
+.kc #shoppingNColl .list_shop .info_sub{padding-right:37px}
+.kc #shoppingNColl .info_sub .share_comp{bottom:0;right:2px}
+.kc #shoppingNColl .cont_view .share_comp{right:4px}
+.kc #shoppingNColl .cell_area .share_comp{right:5px}
+.kc #shoppingNColl div.list_product dd{overflow:visible;word-break:normal}
+.kc #shoppingNColl div.list_product .dl_comp:last-child{margin-right:30px}
+.kc #shoppingNColl .coll_notit + .coll_cont{margin-top:5px}
+.kc #shoppingNColl .coll_notit + .coll_cont::before{display:none}
+.kc #shoppingNColl .coll_notit + .coll_cont .box_keyword{padding-top:15px}
+/* 공유하기버튼 */
+/* 디스플레이 확대버전 대응 */
+/* 2017-09-18 gilbert 광고타입 추가 시작 */
+#shoppingNColl .txt_comp{display:inline-block;height:14px;margin-top:2px;padding:0 4px;/* 2017-10-23 gilbert 넓이 변경*/ border:1px solid #cbcbcb;/* 2017-10-23 gilbert 색상 변경*/ border-radius:15px;font-size:10px;font-weight:bold;line-height:1.65;color:#919191;/* 2017-10-23 gilbert color 변경*/ vertical-align:top}
+#shoppingNColl .txt_emph{/* 2017-10-23 gilbert 버튼 마진top 제거 margin-top:4px;*/ padding:0 4px;/* 2017-11-13 gilbert 수정 */ margin-top:2px;border:1px solid #f73e47;color:#f73e47;letter-spacing:-0.05em;/* 2017-11-13 gilbert 추가 */ }
+#shoppingNColl .info_ad{overflow:visible}
+#shoppingNColl .ico_help_s{margin:2px -2px 0 2px}
+#shoppingNColl .info_ad .txt_comp{float:left}
+#shoppingNColl .info_ad .layer_tip{top:40px;/* 2017-10-23 gilbert top 39px -> 40px */ border:1px solid #e0e0e0;font-size:15px}
+#shoppingNColl .info_ad .txt_info{padding-left:5px;/* 2017-10-23 gilbert 수정 */ font-size:14px;line-height:1.5;/* 2017-10-23 gilbert 수정 */ color:#00b0c0}
+#shoppingNColl .info_ad .wrap_tip{display:inline}
+#shoppingNColl .tip_on .ico_help_s:before{position:absolute;top:22px;/* 2017-10-23 gilbert top 21px -> 22px */ left:34px;width:0;height:0;border:10px solid transparent;z-index:12;margin-top:1px;border-bottom-color:#fff;content:''}
+#shoppingNColl .tip_on .ico_help_s:after{position:absolute;z-index:1;top:22px;/* 2017-10-23 gilbert top 21px -> 22px */ left:34px;width:0;height:0;border:10px solid transparent;border-bottom-color:#e0e0e0;content:''}
+#shoppingNColl .list_product .box_ad .wrap_cont{padding:17px 13px 0;/* 2017-11-13 gilbert 수정 */ border-bottom:none}
+#shoppingNColl .box_ad .info_sub{height:34px;/* 2017-11-13 gilbert 수정 */ padding:0 13px;/* 2017-11-13 gilbert 수정 */ background-color:#fff}
+#shoppingNColl .box_ad .ico_help_s:before, #shoppingNColl .box_ad .ico_help_s:after{top:10px;/* 2017-10-23 gilbert top 21px -> 10px */ left:32px}
+#shoppingNColl .box_ad .layer_tip{top:28px;/* 2017-10-23 gilbert top 39px -> 28px */ left:12px}
+#shoppingNColl .box_ad .info_ad .txt_info{line-height:1.45}
+#shoppingNColl .box_ad .tip_on .txt_comp{float:left}
+#shoppingNColl .box_ad .txt_emph{margin-top:0;/* 2017-11-13 gilbert 수정  */ }
+#shoppingNColl .cell_area:nth-child(2) .box_ad .layer_tip{left:initial;right:-1px}
+/* 2017-09-18 gilbert 광고타입 추가 끝 */
+/* 2017-10-10 brad 안내문구 추가 */
+#shoppingNColl .cp_comp{padding:20px 0;border-top:1px solid #ededed}
+#shoppingNColl .cp_comp .txt_cp{display:inline}
+#shoppingNColl .cp_comp .ico_help{margin-right:5px;vertical-align:text-top}
+#shoppingNColl .cp_comp .f_link{float:right;font-size:13px;color:#000;text-decoration:underline}
+/* 2017-10-10 brad 안내문구 추가 끝 */
+/* 2017-10-30 gilbert 추가 */
+@media all and (min-width:451px){#shoppingNColl .cell_area:nth-child(2) .box_ad .layer_tip{left:12px;right:initial}}
+/* ** 쇼핑개편 끝 ** */
+
+</body>
+</html>
